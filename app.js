@@ -12,11 +12,11 @@ window.onload = function(){
   submitButton.addEventListener("click", function(event){
     event.preventDefault();
 
-    updateDayColors(dayColors, inputColors);
+    updateDayColors();
 
     setColors();
 
-    addToLocalStorage(dayColors);
+    addToLocalStorage();
   })
 
   function setColors(){
@@ -32,16 +32,16 @@ window.onload = function(){
     }
   }
 
-  function updateDayColors(dayObject, inputs){
-    for (var i = 0; i < inputs.length -1; i++) {
-      var colorValue = inputs[i].value;
-      var day = inputs[i].id
-      dayObject[day] = colorValue;
+  function updateDayColors(){
+    for (var i = 0; i < inputColors.length -1; i++) {
+      var colorValue = inputColors[i].value;
+      var day = inputColors[i].id
+      dayColors[day] = colorValue;
     }
   }
 
-  function addToLocalStorage(data){
-    data = JSON.stringify(data);
+  function addToLocalStorage(){
+    data = JSON.stringify(dayColors);
     window.localStorage.colorData = data
   }
 
