@@ -3,9 +3,15 @@ window.onload = function(){
   var submitButton = document.querySelector('form div:last-child input');
   var inputColors = document.querySelectorAll('input');
   var body = document.querySelector('body');
-  var today = new Date(Date.now()).getDay()
+
+  var currentdate = new Date(Date.now())
+  var today = currentdate.getDay()
+
+  document.querySelector('#today').innerText = currentdate;
 
   var dayColors = {};
+
+
 
   getDayColorsFromLocalStorage()
 
