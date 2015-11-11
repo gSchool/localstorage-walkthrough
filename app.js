@@ -5,7 +5,9 @@ window.onload = function(){
   var body = document.querySelector('body');
 
   // returns day of the week, with 0 being Sunday, 1 being Monday, 2 being Tuesday, etc
-  var today = new Date(Date.now()).getDay()
+  var currentdate = new Date(Date.now())
+  var today = currentdate.getDay()
+  document.querySelector('#today').innerText = currentdate;
 
   var dayColors = {};
 
