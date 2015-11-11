@@ -3,6 +3,8 @@ window.onload = function(){
   var submitButton = document.querySelector('form div:last-child input');
   var inputColors = document.querySelectorAll('input');
   var body = document.querySelector('body');
+
+  // returns day of the week, with 0 being Sunday, 1 being Monday, 2 being Tuesday, etc
   var today = new Date(Date.now()).getDay()
 
   var dayColors = {};
@@ -11,38 +13,30 @@ window.onload = function(){
 
   submitButton.addEventListener("click", function(event){
     event.preventDefault();
-
-    updateDayColors(dayColors, inputColors);
-
+    updateDayColors();
     setColors();
-
-    addToLocalStorage(dayColors);
+    addToLocalStorage();
   })
 
   function setColors(){
-    var todaysColor = dayColors[today];
-    body.style.backgroundColor = todaysColor;
+    // set the background color to todays color
   }
 
   function getDayColorsFromLocalStorage(){
-    if (window.localStorage.colorData) {
-      var colorData = JSON.parse(window.localStorage.colorData);
-      var todaysColor = colorData[today];
-      body.style.backgroundColor = todaysColor;
-    }
+    // check if window.localStorage.colorData is not undefined
+    // JSON.parse the colorData
+    // Updated the background color to todays color using the today as the key
   }
 
-  function updateDayColors(dayObject, inputs){
-    for (var i = 0; i < inputs.length -1; i++) {
-      var colorValue = inputs[i].value;
-      var day = inputs[i].id
-      dayObject[day] = colorValue;
-    }
+  function updateDayColors(){
+    // loop through the input boxes that are type color
+    // Get their values and ids
+    // Add it to the dayColors object where the key is the id of each input i.e. monday's input id="1"
   }
 
-  function addToLocalStorage(data){
-    data = JSON.stringify(data);
-    window.localStorage.colorData = data
+  function addToLocalStorage(){
+    // stringify the dayColors object
+    // save it to localStorage as window.localStorage.colorData
   }
 
 }
